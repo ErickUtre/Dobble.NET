@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  INSTRUCCIONES:
+  1. Copia este archivo y renombralo a: CadenaDeConexion.config
+  2. Coloca ese archivo en:
+       - src/server/DataAccess/CadenaDeConexion.config
+       - src/server/Host/CadenaDeConexion.config  (si Host lo requiere)
+       - tests/Pruebas/CadenaDeConexion.config
+  3. Reemplaza NOMBRE_SERVIDOR con el nombre de tu instancia SQL Server.
+     Ejemplos comunes:
+       .\SQLEXPRESS          (SQL Server Express local, instalacion tipica)
+       localhost\SQLEXPRESS  (equivalente)
+       .                     (SQL Server local sin nombre de instancia)
+       localhost             (SQL Server local sin nombre de instancia)
+  4. Este archivo esta en .gitignore y NUNCA debe subirse al repositorio.
+-->
+<connectionStrings>
+  <add name="ModeloDatosDobbleContainer1"
+       connectionString="metadata=res://*/ModeloDatosDobble.csdl|res://*/ModeloDatosDobble.ssdl|res://*/ModeloDatosDobble.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=NOMBRE_SERVIDOR;initial catalog=DobbleBD;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
+       providerName="System.Data.Entity.Design" />
+</connectionStrings>

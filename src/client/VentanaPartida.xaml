@@ -1,0 +1,311 @@
+﻿<Window x:Class="DobbleGame.VentanaPartida"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DobbleGame"
+        xmlns:p="clr-namespace:DobbleGame.Properties"
+        mc:Ignorable="d"
+        Title="VentanaPartida" Height="800" Width="1600" WindowState="Maximized" 
+        WindowStyle="None" ResizeMode="NoResize" Icon="pack://application:,,,/Imagenes/IconoAbejaMenu.png">
+    <Window.Resources>
+        <Style x:Key="FotoPerfil" TargetType="Image">
+            <Setter Property="Height" Value="200"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Stretch" Value="UniformToFill"/>
+            <Setter Property="ClipToBounds" Value="True"/>
+            <Setter Property="Clip">
+                <Setter.Value>
+                    <EllipseGeometry RadiusX="100" RadiusY="100" Center="100,100"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="ColorTriangulo" Color="White"/>
+
+        <Style x:Key="BotonTriangular" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="145.5"/>
+            <Setter Property="Panel.ZIndex" Value="1"/>
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Polygon x:Name="triangulo" Points="0,145.5 120,145.5 60,0"
+                                     Fill="{DynamicResource ColorTriangulo}" Stroke="Black" StrokeThickness="2" Margin="-3,-7,3,7" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="triangulo" Property="Fill" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="EstiloTexto" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="pack://application:,,,/Fuentes/#Lalezar"/>
+            <Setter Property="FontWeight" Value="Heavy"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="3"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="Plantilla1">
+            <Canvas>
+                <TextBlock Style="{StaticResource EstiloTexto}" Text="{Binding Usuario}" Canvas.Right="390" Canvas.Top="690"/>
+                <TextBlock Style="{StaticResource EstiloTexto}" Canvas.Right="390" Canvas.Top="600" Foreground="#F1EA29"
+                           Text="{Binding PuntosEnPartida, StringFormat={x:Static p:Resources.lb_PuntosEnJuego}}" />
+            </Canvas>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Plantilla2">
+            <Canvas>
+                <Image Style="{StaticResource FotoPerfil}" Source="{Binding Foto}" Canvas.Left="120" Canvas.Top="40"/>
+                <TextBlock Text="{Binding Usuario}" Style="{StaticResource EstiloTexto}" Canvas.Left="350" Canvas.Top="50"/>
+                <TextBlock Style="{StaticResource EstiloTexto}" Canvas.Left="140" Canvas.Top="250" Foreground="#F1EA29"
+                           Text="{Binding PuntosEnPartida, StringFormat={x:Static p:Resources.lb_PuntosEnJuego}}" />
+            </Canvas>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Plantilla3">
+            <Canvas>
+                <Image Style="{StaticResource FotoPerfil}" Source="{Binding Foto}" Canvas.Right="40" Canvas.Top="40"/>
+                <TextBlock Text="{Binding Usuario}" Style="{StaticResource EstiloTexto}" Canvas.Right="300" Canvas.Top="50"/>
+                <TextBlock Style="{StaticResource EstiloTexto}" Canvas.Top="250" Canvas.Right="50" Foreground="#F1EA29"
+                           Text="{Binding PuntosEnPartida, StringFormat={x:Static p:Resources.lb_PuntosEnJuego}}" />
+            </Canvas>
+        </DataTemplate>
+
+        <DataTemplate x:Key="Plantilla4">
+            <Canvas>
+                <Image Style="{StaticResource FotoPerfil}" Source="{Binding Foto}" Canvas.Top="560" Canvas.Left="120"/>
+                <TextBlock Text="{Binding Usuario}" Style="{StaticResource EstiloTexto}" Canvas.Left="350" Canvas.Top="690"/>
+                <TextBlock Style="{StaticResource EstiloTexto}" Canvas.Left="140" Canvas.Top="490" Foreground="#F1EA29"
+                           Text="{Binding PuntosEnPartida, StringFormat={x:Static p:Resources.lb_PuntosEnJuego}}" />
+            </Canvas>
+        </DataTemplate>
+
+        <local:SelectorPlantillaJugadorPartida
+            x:Key="SelectorPlantillaJugadorPartida"
+            Plantilla1="{StaticResource Plantilla1}"
+            Plantilla2="{StaticResource Plantilla2}"
+            Plantilla3="{StaticResource Plantilla3}"
+            Plantilla4="{StaticResource Plantilla4}" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/Imagenes/FondoPanalPartida.png" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <TextBlock x:Name="tblCartasRestantes" Style="{StaticResource EstiloTexto}" VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" Margin="200"/>
+
+        <ItemsControl x:Name="controlJugadores" ItemsSource="{Binding JugadoresEnPartida}" 
+                      ItemTemplateSelector="{StaticResource SelectorPlantillaJugadorPartida}" />
+
+        <TextBlock x:Name="tblTexto" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="400" Panel.ZIndex="1"
+                   FontFamily="pack://application:,,,/Fuentes/#Lalezar"/>
+
+        <Button x:Name="btnRegresar" Width="80" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Background="Transparent"
+                    Click="BtnRegresar" Height="91" IsEnabled="False" Opacity="0.7">
+            <Image Source="pack://application:,,,/Imagenes/BotonSalir.png" Stretch="Uniform"/>
+        </Button>
+
+        <Viewbox x:Name="cartaJugador" Stretch="Uniform" Width="300" Height="300" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                 Margin="50" Panel.ZIndex="1">
+            <Canvas Width="300" Height="300">
+                <Button x:Name="boton1" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" Canvas.Left="29" Canvas.Top="131" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono1" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton2" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" Canvas.Left="86" Canvas.Top="152" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image x:Name="Icono2" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton3" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" Canvas.Left="141" Canvas.Top="127" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono3" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton4" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Canvas.Top="76" VerticalAlignment="Center" Canvas.Left="3">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono4" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton5" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Canvas.Left="24" Canvas.Top="19" VerticalAlignment="Center">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="135"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono5" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton6" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" Canvas.Left="80" Canvas.Top="-6" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono6" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton7" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Canvas.Left="137" Canvas.Top="15" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-135"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono7" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button x:Name="boton8" Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" Canvas.Left="163" Canvas.Top="70" HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="Icono8" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+            </Canvas>
+        </Viewbox>
+
+        <Viewbox x:Name="cartaCentral" Stretch="Uniform" Width="300" Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                 IsEnabled="False" Visibility="Collapsed">
+            <Canvas Width="300" Height="300">
+                <Button Style="{StaticResource BotonTriangular}" Click="BtnValidarIcono"
+                        RenderTransformOrigin="0.5,0.5" Canvas.Left="29" Canvas.Top="131" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral1" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" Canvas.Left="86" Canvas.Top="152" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Image x:Name="IconoCentral2" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" Canvas.Left="141" Canvas.Top="127" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral3" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" Canvas.Top="76" 
+                        VerticalAlignment="Center" Canvas.Left="3">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral4" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Canvas.Left="24" 
+                        Canvas.Top="19" VerticalAlignment="Center">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="135"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral5" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" Canvas.Left="80" Canvas.Top="-6" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="180"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral6" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" 
+                        Canvas.Left="137" Canvas.Top="15" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-135"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral7" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+                <Button Style="{StaticResource BotonTriangular}" RenderTransformOrigin="0.5,0.5" Canvas.Left="163" Canvas.Top="70" 
+                        HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <Image x:Name="IconoCentral8" Height="70" Width="70" Margin="0,50,0,0"/>
+                </Button>
+            </Canvas>
+        </Viewbox>
+    </Grid>
+</Window>

@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD7AC94D-BDC3-4E17-B357-01B3597B4F23}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DobbleGame</RootNamespace>
+    <AssemblyName>DobbleGame</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dynamitey, Version=2.0.10.189, Culture=neutral, PublicKeyToken=cbf53ea3aeb972c6, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamitey.2.0.10.189\lib\net40\Dynamitey.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtendedWPFConverters, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ExtendedWPFConverters.2.0.3\lib\net471\ExtendedWPFConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtendedWPFVisualTreeHelper, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\ExtendedWPFVisualTreeHelper.2.0.2\lib\net451\ExtendedWPFVisualTreeHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=3.0.2.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.3.0.2\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=3.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignColors.3.1.0\lib\net462\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=5.1.0.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignThemes.5.1.0\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf.AddOns, Version=0.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialDesignInXamlToolkitAddOns.0.0.6\lib\net471\MaterialDesignThemes.Wpf.AddOns.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Drawing.Common.4.7.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="XamlAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=20a987d8023d9690, processorArchitecture=MSIL">
+      <HintPath>packages\XamlAnimatedGif.2.3.0\lib\net45\XamlAnimatedGif.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Connected Services\Servidor\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ControlDeUsuarioNotificacion.xaml.cs">
+      <DependentUpon>ControlDeUsuarioNotificacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaIngresoCodigo.xaml.cs">
+      <DependentUpon>PaginaIngresoCodigo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaNuevaContraseña.xaml.cs">
+      <DependentUpon>PaginaNuevaContraseña.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaRecuperarContraseña.xaml.cs">
+      <DependentUpon>PaginaRecuperarContraseña.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SelectorPlantillaJugador.cs" />
+    <Compile Include="SelectorPlantillaJugadorPartida.cs" />
+    <Compile Include="Utilidades\CallbackManager.cs" />
+    <Compile Include="VentanaEliminarAmigo.xaml.cs">
+      <DependentUpon>VentanaEliminarAmigo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\Registro.cs" />
+    <Compile Include="VentanaErrorBD.xaml.cs">
+      <DependentUpon>VentanaErrorBD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaErrorConexion.xaml.cs">
+      <DependentUpon>VentanaErrorConexion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaIngresoCodigoSala.xaml.cs">
+      <DependentUpon>VentanaIngresoCodigoSala.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaMenu.xaml.cs">
+      <DependentUpon>PaginaMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaPerfil.xaml.cs">
+      <DependentUpon>PaginaPerfil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaSala.xaml.cs">
+      <DependentUpon>PaginaSala.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.en-US.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.es-MX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.es-MX.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilidades\CadenaVisibilidadConverter.cs" />
+    <Compile Include="Extensiones\PasswordBoxExtensiones.cs" />
+    <Compile Include="Extensiones\TextBoxExtensiones.cs" />
+    <Compile Include="Utilidades\ContraseñaHelper.cs" />
+    <Compile Include="Utilidades\EncriptadorContraseña.cs" />
+    <Compile Include="Utilidades\Utilidades.cs" />
+    <Compile Include="VentanaCambioContraseña.xaml.cs">
+      <DependentUpon>VentanaCambioContraseña.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaCambioNombre.xaml.cs">
+      <DependentUpon>VentanaCambioNombre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaEnviarSolicitudAmistad.xaml.cs">
+      <DependentUpon>VentanaEnviarSolicitudAmistad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaGestionarSolicitudesAmistad.xaml.cs">
+      <DependentUpon>VentanaGestionarSolicitudesAmistad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaMarcadorPartida.xaml.cs">
+      <DependentUpon>VentanaMarcadorPartida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaMenu.xaml.cs">
+      <DependentUpon>VentanaMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaMenuInvitado.xaml.cs">
+      <DependentUpon>VentanaMenuInvitado.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaModalDecision.xaml.cs">
+      <DependentUpon>VentanaModalDecision.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaPartida.xaml.cs">
+      <DependentUpon>VentanaPartida.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaRecuperarContraseña.xaml.cs">
+      <DependentUpon>VentanaRecuperarContraseña.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaRegistro.xaml.cs">
+      <DependentUpon>VentanaRegistro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaRegistroExitoso.xaml.cs">
+      <DependentUpon>VentanaRegistroExitoso.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ControlDeUsuarioNotificacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PaginaIngresoCodigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaNuevaContraseña.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaRecuperarContraseña.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaEliminarAmigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaErrorBD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaErrorConexion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaIngresoCodigoSala.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaPerfil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaSala.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaCambioContraseña.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaCambioNombre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaEnviarSolicitudAmistad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaGestionarSolicitudesAmistad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaMarcadorPartida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaMenuInvitado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaModalDecision.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaPartida.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaRecuperarContraseña.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaRegistro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaRegistroExitoso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.es-MX.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.es-MX.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fuentes\Lalezar-Regular.ttf" />
+    <Resource Include="Fuentes\LuckiestGuy-Regular.ttf" />
+    <None Include="Connected Services\Servidor\DobbleGame.Servidor.RespuestaServicioOfAmistad6jbaXeYD.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Servidor\DobbleGame.Servidor.RespuestaServicioOfArrayOfAmistad6jbaXeYD.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Servidor\DobbleGame.Servidor.RespuestaServicioOfboolean.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Servidor\DobbleGame.Servidor.RespuestaServicioOfCuentaUsuario6jbaXeYD.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Servidor\DobbleGame.Servidor.RespuestaServicioOfNullableOfint5F2dSckg.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Servidor\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Servidor\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Servidor\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Servidor\ServicioImplementacion.wsdl" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoPanal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonRegresar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonSalir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoPanalSala.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonEnviarMensaje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonMandarSolicitud.png" />
+    <Resource Include="Imagenes\BuscarAmistad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonEdicion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoPanalGris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\IconoAdvertencia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonIniciarPartida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\IconoInformacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\IconoExito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\AbejaLobbyGris.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\FondoPanalPartida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonEliminarAmigo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\Arbol.png" />
+    <Resource Include="Iconos\Auto.png" />
+    <Resource Include="Iconos\Balon.png" />
+    <Resource Include="Iconos\Bebe.png" />
+    <Resource Include="Iconos\Bicicleta.png" />
+    <Resource Include="Iconos\Bola.png" />
+    <Resource Include="Iconos\Caballo.png" />
+    <Resource Include="Iconos\Camara.png" />
+    <Resource Include="Iconos\Cangrejo.png" />
+    <Resource Include="Iconos\Casa.png" />
+    <Resource Include="Iconos\Chanclas.png" />
+    <Resource Include="Iconos\Circo.png" />
+    <Resource Include="Iconos\Cohete.png" />
+    <Resource Include="Iconos\Consola.png" />
+    <Resource Include="Iconos\Corazon.png" />
+    <Resource Include="Iconos\Corona.png" />
+    <Resource Include="Iconos\Crayolas.png" />
+    <Resource Include="Iconos\Cubeta.png" />
+    <Resource Include="Iconos\Dragon.png" />
+    <Resource Include="Iconos\Enojado.png" />
+    <Resource Include="Iconos\Feliz.png" />
+    <Resource Include="Iconos\Flor.png" />
+    <Resource Include="Iconos\Foco.png" />
+    <Resource Include="Iconos\Gato.png" />
+    <Resource Include="Iconos\Globos.png" />
+    <Resource Include="Iconos\Hamster.png" />
+    <Resource Include="Iconos\Lapiz.png" />
+    <Resource Include="Iconos\Loro.png" />
+    <Resource Include="Iconos\Luna.png" />
+    <Resource Include="Iconos\Mano.png" />
+    <Resource Include="Iconos\Manzana.png" />
+    <Resource Include="Iconos\Mochila.png" />
+    <Resource Include="Iconos\Montaña.png" />
+    <Resource Include="Iconos\Moto.png" />
+    <Resource Include="Iconos\Naranja.png" />
+    <Resource Include="Iconos\Niña.png" />
+    <Resource Include="Iconos\Pastel.png" />
+    <Resource Include="Iconos\Pato.png" />
+    <Resource Include="Iconos\Pera.png" />
+    <Resource Include="Iconos\Perro.png" />
+    <Resource Include="Iconos\Pie.png" />
+    <Resource Include="Iconos\Pila.png" />
+    <Resource Include="Iconos\Pino.png" />
+    <Resource Include="Iconos\Pintura.png" />
+    <Resource Include="Iconos\Rana.png" />
+    <Resource Include="Iconos\Regalo.png" />
+    <Resource Include="Iconos\Regla.png" />
+    <Resource Include="Iconos\Reloj.png" />
+    <Resource Include="Iconos\Reno.png" />
+    <Resource Include="Iconos\Robot.png" />
+    <Resource Include="Iconos\Rompecabezas.png" />
+    <Resource Include="Iconos\Santa.png" />
+    <Resource Include="Iconos\Sofa.png" />
+    <Resource Include="Iconos\Sol.png" />
+    <Resource Include="Iconos\Sombrilla.png" />
+    <Resource Include="Iconos\Tren.png" />
+    <Resource Include="Iconos\Triste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\Ficha.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\IconoAbejaMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\BotonSolicitudes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\PerfilPorDefecto.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Servidor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Servidor\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Servidor\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Servidor\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Servidor\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets" Condition="Exists('packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MaterialDesignThemes.5.1.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>

@@ -1,0 +1,34 @@
+﻿<Page x:Class="DobbleGame.PaginaRecuperarContraseña"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DobbleGame"
+        xmlns:extensiones="clr-namespace:DobbleGame.Extensiones"
+        xmlns:Properties="clr-namespace:DobbleGame.Properties" 
+        mc:Ignorable="d"
+      d:DesignHeight="420" d:DesignWidth="500"
+      Title="PaginaRecuperarContraseña">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Imagenes/FondoPanalGris.png"/>
+        </Grid.Background>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+
+        <Label Content="{x:Static Properties:Resources.lb_EnvíoDeCódigo}" Style="{StaticResource TituloLalezar1}" Width="304" 
+               FontSize="45" Margin="0,29,0,314" HorizontalContentAlignment="Center" />
+        <TextBox Name="tbCorreo" MaxLength="64" 
+                 extensiones:TextBoxExtensiones.TextoSugerido="{x:Static Properties:Resources.global_CorreoElectrónico}" 
+                 TextWrapping="NoWrap" Width="NaN" Height="NaN" Margin="98,161,97,210" />
+        <Button Content="{x:Static Properties:Resources.btn_EnviarCódigo}" FontSize="13" Background="#FF62E02C" Foreground="White" 
+                Click="BtnEnviarCodigo" Margin="68,287,277,77"/>
+        <Button Content="{x:Static Properties:Resources.global_Cancelar}" FontSize="13" Background="#FFF44545" Foreground="White" 
+                Click="BtnCancelar" Margin="281,287,63,80"/>
+
+        <Image Name="IconoAdvertencia" Source="pack://application:,,,/Imagenes/IconoAdvertencia.png" Stretch="Uniform" Visibility="Hidden" 
+               Margin="109,106,344,263"/>
+        <Label Name="lbMensaje" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Foreground="Red" 
+               RenderTransformOrigin="0.218,0.569" Margin="146,110,0,0" Width="291" Height="32"/>
+    </Grid>
+</Page>

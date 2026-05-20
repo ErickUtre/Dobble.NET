@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lb_ErrorConexiónBD" xml:space="preserve">
+    <value>Database connection error</value>
+  </data>
+  <data name="lb_MensajeErrorConexiónBD" xml:space="preserve">
+    <value>Sorry, it seems we lost connection to the database, please try again later</value>
+  </data>
+  <data name="lb_ErrorConexiónServidor" xml:space="preserve">
+    <value>Server connection error</value>
+  </data>
+  <data name="lb_MensajeErrorConexiónServidor" xml:space="preserve">
+    <value>Sorry, it seems we lost connection to the server, please try again later</value>
+  </data>
+  <data name="lb_CamposVacíos" xml:space="preserve">
+    <value>The form contains empty fields</value>
+  </data>
+  <data name="lb_DatosInválidos" xml:space="preserve">
+    <value>The form contains invalid data</value>
+  </data>
+  <data name="global_Aceptar" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="global_Cancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="global_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="global_Actualizar" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="global_Usuario" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="global_NuevaContraseña" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="global_ConfirmarContraseña" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="global_CorreoElectrónico" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="lb_ContraseñaOlvidada" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="lb_CrearCuenta" xml:space="preserve">
+    <value>Haven't created an account yet? Sign up</value>
+  </data>
+  <data name="btn_Entrar" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="btn_EntrarComoInvitado" xml:space="preserve">
+    <value>Enter as guest</value>
+  </data>
+  <data name="lb_Registro" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="btn_Registrar" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="lb_RegistroExitoso" xml:space="preserve">
+    <value>Registration successful</value>
+  </data>
+  <data name="lb_EnvíoDeCódigo" xml:space="preserve">
+    <value>Code sent</value>
+  </data>
+  <data name="btn_EnviarCódigo" xml:space="preserve">
+    <value>Send code</value>
+  </data>
+  <data name="lb_IngresarCódigo" xml:space="preserve">
+    <value>Enter code</value>
+  </data>
+  <data name="lb_CódigoEnviado" xml:space="preserve">
+    <value>We've sent a code to your e-mail address</value>
+  </data>
+  <data name="tb_Código" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="btn_Reintentar" xml:space="preserve">
+    <value>Retry</value>
+  </data>
+  <data name="btn_CrearSala" xml:space="preserve">
+    <value>Create Lobby</value>
+  </data>
+  <data name="btn_UnirseASala" xml:space="preserve">
+    <value>Join lobby</value>
+  </data>
+  <data name="lb_EnLínea" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="lb_Ausente" xml:space="preserve">
+    <value>Away</value>
+  </data>
+  <data name="lb_Buscar" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="lb_MensajeMenúInvitado" xml:space="preserve">
+    <value>You started as a guest, to access all the features of DOBBLE.NET, please log in</value>
+  </data>
+  <data name="btn_ActualizarFoto" xml:space="preserve">
+    <value>Update photo</value>
+  </data>
+  <data name="lb_FormatoInválido" xml:space="preserve">
+    <value>The file is invalid or too large, select one that does not exceed 10 kb</value>
+  </data>
+  <data name="lb_CambioNombre" xml:space="preserve">
+    <value>Change name</value>
+  </data>
+  <data name="lb_IngresarNombreUsuario" xml:space="preserve">
+    <value>Enter your new username</value>
+  </data>
+  <data name="lb_NuevoNombreUsuario" xml:space="preserve">
+    <value>New username</value>
+  </data>
+  <data name="lb_CambioContraseña" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="lb_ContraseñaActual" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="lb_IngreseNuevoNombre" xml:space="preserve">
+    <value>Enter your new username</value>
+  </data>
+  <data name="tb_NuevoNombre" xml:space="preserve">
+    <value>New username</value>
+  </data>
+  <data name="lb_SolicitudesAmistad" xml:space="preserve">
+    <value>Friend requests</value>
+  </data>
+  <data name="btn_Rechazar" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="lb_MensajeEliminarAmigo" xml:space="preserve">
+    <value>¿Are you sure you want to remove ...?</value>
+  </data>
+  <data name="btn_Eliminar" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="lb_UnirseAPartida" xml:space="preserve">
+    <value>Join game</value>
+  </data>
+  <data name="lb_MensajeUnirsePartida" xml:space="preserve">
+    <value>Enter the room code to join</value>
+  </data>
+  <data name="tb_CódigoDeSala" xml:space="preserve">
+    <value>Lobby code</value>
+  </data>
+  <data name="btn_Unirse" xml:space="preserve">
+    <value>Join</value>
+  </data>
+  <data name="lb_Jugador" xml:space="preserve">
+    <value>Player {0}</value>
+  </data>
+  <data name="btn_Invitar" xml:space="preserve">
+    <value>Invite</value>
+  </data>
+  <data name="btn_InvitarPorCorreo" xml:space="preserve">
+    <value>Invite by e-mail</value>
+  </data>
+  <data name="tb_ClicChat" xml:space="preserve">
+    <value>Clic to chat...</value>
+  </data>
+  <data name="btn_IniciarPartida" xml:space="preserve">
+    <value>Start game</value>
+  </data>
+  <data name="lb_EnviarInvitación" xml:space="preserve">
+    <value>Send invitation</value>
+  </data>
+  <data name="lb_MensajeEnviarInvitación" xml:space="preserve">
+    <value>Enter the e-mail to send the lobby invitation</value>
+  </data>
+  <data name="btn_Enviar" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="lb_MensajeAbandonarPartida" xml:space="preserve">
+    <value>Are you sure you want to leave the game?</value>
+  </data>
+  <data name="lb_MensajeExpulsarJugador" xml:space="preserve">
+    <value>Are you sure you want to kick {0}?</value>
+  </data>
+  <data name="lb_Puntos" xml:space="preserve">
+    <value>Score: {0}</value>
+  </data>
+  <data name="btn_Abandonar" xml:space="preserve">
+    <value>Leave</value>
+  </data>
+  <data name="btn_Expulsar" xml:space="preserve">
+    <value>Kick</value>
+  </data>
+  <data name="titulo_MenúInvitado" xml:space="preserve">
+    <value>Guest menu</value>
+  </data>
+  <data name="titulo_ErrorConexiónBD" xml:space="preserve">
+    <value>Database connection error</value>
+  </data>
+  <data name="titulo_ErrorConexiónServidor" xml:space="preserve">
+    <value>Server connection error</value>
+  </data>
+  <data name="titulo_Registro" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="titulo_Menu" xml:space="preserve">
+    <value>Menu</value>
+  </data>
+  <data name="titulo_EnvíoDeCódigo" xml:space="preserve">
+    <value>Sending code</value>
+  </data>
+  <data name="titulo_EsperaConfirmación" xml:space="preserve">
+    <value>Waiting for confirmation</value>
+  </data>
+  <data name="titulo_NuevaContraseña" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="titulo_Perfil" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="titulo_CambioNombre" xml:space="preserve">
+    <value>Change name</value>
+  </data>
+  <data name="titulo_CambioContraseña" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="titulo_SolicitudesAmistad" xml:space="preserve">
+    <value>Friend requests</value>
+  </data>
+  <data name="lb_EliminarAmigo" xml:space="preserve">
+    <value>Are you sure you want to delete this friend? </value>
+  </data>
+  <data name="titulo_Sala" xml:space="preserve">
+    <value>Lobby</value>
+  </data>
+  <data name="titulo_SalaInvitado" xml:space="preserve">
+    <value>Guest lobby</value>
+  </data>
+  <data name="lb_Dobble.NET" xml:space="preserve">
+    <value>DOBBLE.NET</value>
+  </data>
+  <data name="global_IniciarSesión" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="lb_Contraseña" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lb_NombreUsuario" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="lb_UsuarioExistente" xml:space="preserve">
+    <value>Username already exists</value>
+  </data>
+  <data name="lb_CorreoNoExiste " xml:space="preserve">
+    <value>The e-mail is doesn't exist</value>
+  </data>
+  <data name="lb_EnviarSolicitud " xml:space="preserve">
+    <value>Send friend request</value>
+  </data>
+  <data name="lb_IngresarNombreJugador " xml:space="preserve">
+    <value>Enter the player's username</value>
+  </data>
+  <data name="lb_CorreoInválido" xml:space="preserve">
+    <value>The e-mail is not valid</value>
+  </data>
+  <data name="lb_ContraseñaActualInvalida" xml:space="preserve">
+    <value>The current password is invalid </value>
+  </data>
+  <data name="lb_ErrorInicioSesión" xml:space="preserve">
+    <value>The username and/or password are incorrect</value>
+  </data>
+  <data name="lb_ErrorInesperado" xml:space="preserve">
+    <value>An unexpected error has ocurred</value>
+  </data>
+  <data name="lb_SolicitudYaEnviada " xml:space="preserve">
+    <value>There is already a pending request or friendship with this user </value>
+  </data>
+  <data name="msg_UnionSala" xml:space="preserve">
+    <value>has joined the room</value>
+  </data>
+  <data name="msg_AbandonoSala" xml:space="preserve">
+    <value>has left the room</value>
+  </data>
+  <data name="lb_Puntaje" xml:space="preserve">
+    <value>Score: {0}</value>
+  </data>
+  <data name="lb_SesiónActiva" xml:space="preserve">
+    <value>The account already has an active session </value>
+  </data>
+  <data name="msg_ExpulsionSala" xml:space="preserve">
+    <value>have been expelled</value>
+  </data>
+  <data name="lb_HasSidoExpulsado" xml:space="preserve">
+    <value>You have been expelled from the lobby</value>
+  </data>
+  <data name="btn_CerrarSesión" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="lb_MensajeCerrarSesion" xml:space="preserve">
+    <value>Are you sure you want to log out?</value>
+  </data>
+  <data name="lb_SolicitudATiMismo " xml:space="preserve">
+    <value>You cannot send a friend request to yourself </value>
+  </data>
+  <data name="global_MismaContraseña " xml:space="preserve">
+    <value>You can't have the same password </value>
+  </data>
+  <data name="lb_CodigoInvalido" xml:space="preserve">
+    <value>Invalid code</value>
+  </data>
+  <data name="lb_PuntosEnJuego" xml:space="preserve">
+    <value>{0} points</value>
+  </data>
+  <data name="lb_EstasListo" xml:space="preserve">
+    <value>Are you ready?</value>
+  </data>
+  <data name="btn_Listo" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="lb_SalaLlena" xml:space="preserve">
+    <value>The lobby is full</value>
+  </data>
+  <data name="lb_SalaEnPartida" xml:space="preserve">
+    <value>The room is currently in a game</value>
+  </data>
+  <data name="lb_SalaInexistente" xml:space="preserve">
+    <value>The lobby does not exist</value>
+  </data>
+  <data name="lb_Dobble" xml:space="preserve">
+    <value>Dobble!</value>
+  </data>
+  <data name="lb_FinDelJuego" xml:space="preserve">
+    <value>Game over!</value>
+  </data>
+  <data name="btn_IrInicioSesion " xml:space="preserve">
+    <value>Go to login screen </value>
+  </data>
+  <data name="lb_TeEstaInvitando " xml:space="preserve">
+    <value>{0} is inviting you to play! </value>
+  </data>
+  <data name="msg_MinimoJugadores" xml:space="preserve">
+    <value>At least 2 players are required to start the game</value>
+  </data>
+  <data name="lb_ConfirmarIrPerfil" xml:space="preserve">
+    <value>Doing this will make you leave the lobby 
+Are you sure you want to go to the profile?</value>
+  </data>
+  <data name="lb_Invitado" xml:space="preserve">
+    <value>Guest{0}</value>
+  </data>
+  <data name="btn_SolicitudesDeAmistad" xml:space="preserve">
+    <value>Friend requests</value>
+  </data>
+  <data name="btn_AgregarAmistad" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="btn_EliminarAmigo" xml:space="preserve">
+    <value>Remove friend</value>
+  </data>
+  <data name="lb_CartasRestantes" xml:space="preserve">
+    <value>Remaining cards {0}</value>
+  </data>
+  <data name="lb_Victoria" xml:space="preserve">
+    <value>Victory!</value>
+  </data>
+  <data name="btn_IrASala" xml:space="preserve">
+    <value>Go to the lobby</value>
+  </data>
+  <data name="global_Listo" xml:space="preserve">
+    <value>Ready!</value>
+  </data>
+  <data name="msg_CodigoCopiado" xml:space="preserve">
+    <value>Copied code</value>
+  </data>
+  <data name="msg_JugadoresNoListos" xml:space="preserve">
+    <value>Not all players are ready</value>
+  </data>
+  <data name="msg_YaEstasListo" xml:space="preserve">
+    <value>You are ready</value>
+  </data>
+  <data name="msg_JugadorEnSala" xml:space="preserve">
+    <value>The player is already in the lobby</value>
+  </data>
+  <data name="msg_InvitaciónEnviada" xml:space="preserve">
+    <value>Invitation sent</value>
+  </data>
+  <data name="msg_InvitaciónPendiente" xml:space="preserve">
+    <value>The user has a pending invitation </value>
+  </data>
+  <data name="btn_CambioIdioma" xml:space="preserve">
+    <value>Switch to Spanish</value>
+  </data>
+  <data name="lb_CorreoExistente" xml:space="preserve">
+    <value>E-mail already exists</value>
+  </data>
+  <data name="lb_ContraseñaNoCoincide" xml:space="preserve">
+    <value>Password doesn't match</value>
+  </data>
+  <data name="lb_MensajeErrorCanalServidor " xml:space="preserve">
+    <value>Sorry, it seems the client is not on the current server channel, please log in again. </value>
+  </data>
+  <data name="titulo_EliminarAmigo" xml:space="preserve">
+    <value>Are you sure you want to delete this friend? </value>
+  </data>
+  <data name="msg_DebesSerAnfitrion" xml:space="preserve">
+    <value>You must be the host to start the game</value>
+  </data>
+  <data name="msg_EresAnfitrion" xml:space="preserve">
+    <value>You are now the host </value>
+  </data>
+  <data name="lb_ContraseñaIncorrecta" xml:space="preserve">
+    <value>The password doesn't meet the requirements</value>
+  </data>
+  <data name="lb_UsuarioInexistente " xml:space="preserve">
+    <value>The username doesn’t exist </value>
+  </data>
+  <data name="lb_Empate" xml:space="preserve">
+    <value>Tie!</value>
+  </data>
+</root>

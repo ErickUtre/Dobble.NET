@@ -1,0 +1,32 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DobbleGame"
+        xmlns:extensiones="clr-namespace:DobbleGame.Extensiones"
+        xmlns:Properties="clr-namespace:DobbleGame.Properties" x:Class="DobbleGame.VentanaCambioNombre"
+        mc:Ignorable="d"
+        Title="VentanaCambioNombre" Height="630" Width="700" WindowStyle="None">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Imagenes/FondoPanalGris.png"/>
+        </Grid.Background>
+        <Image Name="advertenciaIcono" Margin="147,187,483,373" Source="pack://application:,,,/Imagenes/IconoAdvertencia.png" Stretch="Uniform" 
+               Visibility="Hidden"/>
+        <Label Content="{x:Static Properties:Resources.lb_CambioNombre}" Style="{StaticResource TituloLalezar1}" Margin="0,23,0,484" Width="516" 
+               FontSize="65" HorizontalContentAlignment="Center" />
+        <TextBox Name="tbNuevoNombre" extensiones:TextBoxExtensiones.TextoSugerido="{x:Static Properties:Resources.tb_NuevoNombre}" 
+                 TextWrapping="Wrap" Width="NaN" Height="NaN" Margin="122,284,122,284" MaxLength="15"/>
+        <Label Content="{x:Static Properties:Resources.lb_IngresarNombreUsuario}" Margin="0,122,0,440" HorizontalAlignment="Center" 
+               FontFamily="Segoe UI" 
+               Foreground="White" Width="418" FontSize="25" HorizontalContentAlignment="Center" />
+        <Button Content="{x:Static Properties:Resources.global_Actualizar}" FontSize="20" Background="#FF62E02C" Foreground="White" 
+                Margin="92,422,396,115" Click="BtnActualizarUsuario"/>
+        <Button Content="{x:Static Properties:Resources.global_Cancelar}" FontSize="20" Background="#FFF44545" Foreground="White" 
+                Margin="396,422,92,115" Click="BtnCancelar"/>
+        <Label Name="lbMensaje" HorizontalAlignment="Left" Margin="217,203,0,0" VerticalAlignment="Top" FontSize="18" Foreground="Red" 
+               RenderTransformOrigin="0.218,0.569"/>
+
+    </Grid>
+</Window>
