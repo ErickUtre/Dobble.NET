@@ -41,6 +41,7 @@ bld/
 *.nupkg
 *.snupkg
 .nuget/
+nuget.exe
 
 # ============================================================
 # Logs de la aplicacion

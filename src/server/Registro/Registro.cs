@@ -1,45 +1,60 @@
-﻿using log4net;
-using log4net.Config;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Diagnostics;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Registro
 {
+    // Implementación simple de registro para evitar la dependencia de log4net
     public static class Registro
     {
-        private static readonly ILog registro = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         static Registro()
         {
-            XmlConfigurator.Configure();
+            // Configuración mínima: asegurarse de que las trazas se muestran
+            Trace.Listeners.Clear();
+            Trace.Listeners.Add(new TextWriterTraceListener(Console.Out));
+            Trace.AutoFlush = true;
         }
 
         public static void Informacion(string mensaje)
         {
-            registro.Info(mensaje);
+            Trace.TraceInformation(FormatMessage("INFO", mensaje));
         }
 
         public static void Depuracion(string mensaje)
         {
-            registro.Debug(mensaje);
+            Trace.TraceInformation(FormatMessage("DEBUG", mensaje));
         }
 
         public static void Advertencia(string mensaje)
         {
-            registro.Warn(mensaje);
+            Trace.TraceWarning(FormatMessage("WARN", mensaje));
         }
 
         public static void Error(string mensaje, Exception ex = null)
         {
-            registro.Error(mensaje, ex);
+            var full = new StringBuilder();
+            full.AppendLine(FormatMessage("ERROR", mensaje));
+            if (ex != null)
+            {
+                full.AppendLine(ex.ToString());
+            }
+            Trace.TraceError(full.ToString());
         }
 
         public static void Fatal(string mensaje, Exception ex = null)
         {
-            registro.Fatal(mensaje, ex);
+            var full = new StringBuilder();
+            full.AppendLine(FormatMessage("FATAL", mensaje));
+            if (ex != null)
+            {
+                full.AppendLine(ex.ToString());
+            }
+            Trace.TraceError(full.ToString());
+        }
+
+        private static string FormatMessage(string nivel, string mensaje)
+        {
+            return $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss}] [{nivel}] {mensaje}";
         }
     }
 }
