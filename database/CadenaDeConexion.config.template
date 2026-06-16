@@ -2,9 +2,10 @@
 <!--
   INSTRUCCIONES:
   1. Copia este archivo y renombralo a: CadenaDeConexion.config
-  2. Coloca ese archivo en:
+  2. Coloca ese archivo en CADA una de estas ubicaciones:
        - src/server/DataAccess/CadenaDeConexion.config
-       - src/server/Host/CadenaDeConexion.config  (si Host lo requiere)
+       - src/server/Logica/CadenaDeConexion.config
+       - src/server/Host/CadenaDeConexion.config
        - tests/Pruebas/CadenaDeConexion.config
   3. Reemplaza NOMBRE_SERVIDOR con el nombre de tu instancia SQL Server.
      Ejemplos comunes:
@@ -12,10 +13,12 @@
        localhost\SQLEXPRESS  (equivalente)
        .                     (SQL Server local sin nombre de instancia)
        localhost             (SQL Server local sin nombre de instancia)
-  4. Este archivo esta en .gitignore y NUNCA debe subirse al repositorio.
+  4. NO cambies el name ("DobbleBDEntidades"): debe coincidir con el contexto
+     de Entity Framework (DbContext DobbleBDEntidades).
+  5. Este archivo esta en .gitignore y NUNCA debe subirse al repositorio.
 -->
 <connectionStrings>
-  <add name="ModeloDatosDobbleContainer1"
+  <add name="DobbleBDEntidades"
        connectionString="metadata=res://*/ModeloDatosDobble.csdl|res://*/ModeloDatosDobble.ssdl|res://*/ModeloDatosDobble.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=NOMBRE_SERVIDOR;initial catalog=DobbleBD;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;"
-       providerName="System.Data.Entity.Design" />
+       providerName="System.Data.EntityClient" />
 </connectionStrings>
