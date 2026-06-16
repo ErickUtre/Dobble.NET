@@ -49,10 +49,12 @@ namespace DobbleGame
                 return;
             }
 
-            // Tamaño de diseño = el tamaño con el que se creó la ventana en XAML
-            // (se conserva en Width/Height aunque la ventana esté maximizada).
-            double anchoDiseno = ObtenerDimensionDeDiseno(ventana.Width, ventana.RestoreBounds.Width, contenido.ActualWidth);
-            double altoDiseno = ObtenerDimensionDeDiseno(ventana.Height, ventana.RestoreBounds.Height, contenido.ActualHeight);
+            // Tamaño de diseño = el tamaño con el que se creó la ventana en XAML.
+            // OJO: en una ventana maximizada, Width/Height ya reflejan el tamaño
+            // maximizado; el tamaño de diseño real está en RestoreBounds.
+            bool maximizada = ventana.WindowState == WindowState.Maximized;
+            double anchoDiseno = ObtenerDimensionDeDiseno(maximizada, ventana.RestoreBounds.Width, ventana.Width, contenido.ActualWidth);
+            double altoDiseno = ObtenerDimensionDeDiseno(maximizada, ventana.RestoreBounds.Height, ventana.Height, contenido.ActualHeight);
             if (anchoDiseno <= 0 || altoDiseno <= 0)
             {
                 return;
@@ -82,8 +84,13 @@ namespace DobbleGame
             }
         }
 
-        private static double ObtenerDimensionDeDiseno(double valorVentana, double valorRestaurado, double valorActual)
+        private static double ObtenerDimensionDeDiseno(bool maximizada, double valorRestaurado, double valorVentana, double valorActual)
         {
+            // En ventanas maximizadas el tamaño de diseño es el de restauración.
+            if (maximizada && !double.IsNaN(valorRestaurado) && valorRestaurado > 0)
+            {
+                return valorRestaurado;
+            }
             if (!double.IsNaN(valorVentana) && valorVentana > 0)
             {
                 return valorVentana;
