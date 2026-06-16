@@ -1,4 +1,4 @@
-﻿using DobbleGame.Servidor;
+using DobbleGame.Servidor;
 using DobbleGame.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,79 @@ namespace DobbleGame
 {
     public partial class App : Application
     {
-      
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Hace que el contenido de CUALQUIER ventana se escale de forma
+            // uniforme para adaptarse a la resolución de la pantalla en la que se
+            // ejecuta, sin importar el tamaño de esta. Se aplica de forma global
+            // a todas las ventanas para no tener que modificar cada XAML.
+            EventManager.RegisterClassHandler(
+                typeof(Window),
+                FrameworkElement.LoadedEvent,
+                new RoutedEventHandler(AdaptarVentanaAResolucion));
+        }
+
+        private void AdaptarVentanaAResolucion(object sender, RoutedEventArgs e)
+        {
+            Window ventana = sender as Window;
+            if (ventana == null)
+            {
+                return;
+            }
+
+            // Si ya fue procesada (su contenido es un Viewbox) no se vuelve a envolver.
+            FrameworkElement contenido = ventana.Content as FrameworkElement;
+            if (contenido == null || contenido is Viewbox)
+            {
+                return;
+            }
+
+            // Tamaño de diseño = el tamaño con el que se creó la ventana en XAML
+            // (se conserva en Width/Height aunque la ventana esté maximizada).
+            double anchoDiseno = ObtenerDimensionDeDiseno(ventana.Width, ventana.RestoreBounds.Width, contenido.ActualWidth);
+            double altoDiseno = ObtenerDimensionDeDiseno(ventana.Height, ventana.RestoreBounds.Height, contenido.ActualHeight);
+            if (anchoDiseno <= 0 || altoDiseno <= 0)
+            {
+                return;
+            }
+
+            // El contenido se "congela" a su tamaño de diseño y se mete en un
+            // Viewbox, que lo escala uniformemente al tamaño real de la ventana.
+            ventana.Content = null;
+            contenido.Width = anchoDiseno;
+            contenido.Height = altoDiseno;
+            ventana.Content = new Viewbox
+            {
+                Stretch = Stretch.Uniform,
+                Child = contenido
+            };
+
+            // En las ventanas maximizadas (pantallas de juego) el escalado
+            // uniforme puede dejar franjas a los lados; se rellenan con el fondo
+            // de la aplicación para que combinen con el tema.
+            if (ventana.WindowState == WindowState.Maximized && !ventana.AllowsTransparency)
+            {
+                ventana.Background = new ImageBrush(
+                    new BitmapImage(new Uri("pack://application:,,,/Imagenes/FondoPanal.jpg")))
+                {
+                    Stretch = Stretch.UniformToFill
+                };
+            }
+        }
+
+        private static double ObtenerDimensionDeDiseno(double valorVentana, double valorRestaurado, double valorActual)
+        {
+            if (!double.IsNaN(valorVentana) && valorVentana > 0)
+            {
+                return valorVentana;
+            }
+            if (!double.IsNaN(valorRestaurado) && valorRestaurado > 0)
+            {
+                return valorRestaurado;
+            }
+            return valorActual;
+        }
     }
 }
