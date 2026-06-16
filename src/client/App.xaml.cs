@@ -15,6 +15,8 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
 
 namespace DobbleGame
 {
@@ -65,22 +67,66 @@ namespace DobbleGame
             ventana.Content = null;
             contenido.Width = anchoDiseno;
             contenido.Height = altoDiseno;
+
+            // En ventanas maximizadas, para que el escalado uniforme NO deje
+            // franjas visibles, se mueve el fondo del propio contenido a la
+            // ventana (así cubre toda la pantalla) y solo se escala el primer
+            // plano. De este modo el fondo (panal) llena la pantalla sin marcos.
+            if (maximizada && !ventana.AllowsTransparency)
+            {
+                Brush fondoContenido = ObtenerFondo(contenido);
+                if (fondoContenido != null)
+                {
+                    EstablecerFondo(contenido, Brushes.Transparent);
+                    ventana.Background = fondoContenido;
+                }
+            }
+
             ventana.Content = new Viewbox
             {
                 Stretch = Stretch.Uniform,
                 Child = contenido
             };
+        }
 
-            // En las ventanas maximizadas (pantallas de juego) el escalado
-            // uniforme puede dejar franjas a los lados; se rellenan con el fondo
-            // de la aplicación para que combinen con el tema.
-            if (ventana.WindowState == WindowState.Maximized && !ventana.AllowsTransparency)
+        private static Brush ObtenerFondo(FrameworkElement elemento)
+        {
+            Panel panel = elemento as Panel;
+            if (panel != null)
             {
-                ventana.Background = new ImageBrush(
-                    new BitmapImage(new Uri("pack://application:,,,/Imagenes/FondoPanal.jpg")))
-                {
-                    Stretch = Stretch.UniformToFill
-                };
+                return panel.Background;
+            }
+            Border borde = elemento as Border;
+            if (borde != null)
+            {
+                return borde.Background;
+            }
+            Control control = elemento as Control;
+            if (control != null)
+            {
+                return control.Background;
+            }
+            return null;
+        }
+
+        private static void EstablecerFondo(FrameworkElement elemento, Brush brocha)
+        {
+            Panel panel = elemento as Panel;
+            if (panel != null)
+            {
+                panel.Background = brocha;
+                return;
+            }
+            Border borde = elemento as Border;
+            if (borde != null)
+            {
+                borde.Background = brocha;
+                return;
+            }
+            Control control = elemento as Control;
+            if (control != null)
+            {
+                control.Background = brocha;
             }
         }
 
