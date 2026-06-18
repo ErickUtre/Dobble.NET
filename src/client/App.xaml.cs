@@ -15,6 +15,7 @@ using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
 
@@ -34,6 +35,83 @@ namespace DobbleGame
                 typeof(Window),
                 FrameworkElement.LoadedEvent,
                 new RoutedEventHandler(AdaptarVentanaAResolucion));
+
+            // Las ventanas maximizadas que alojan páginas (menú, perfil, sala) en
+            // un Frame tienen el problema de que cada página pinta su PROPIO fondo,
+            // que no coincide ni en escala ni en color con el de la ventana. Por eso
+            // se traslada el fondo de la página a la ventana CADA VEZ que se navega,
+            // para que cubra toda la pantalla (incluidas las franjas del escalado
+            // uniforme) sin dejar marcos de otro color.
+            EventManager.RegisterClassHandler(
+                typeof(Frame),
+                FrameworkElement.LoadedEvent,
+                new RoutedEventHandler(EngancharNavegacionDeFrame));
+        }
+
+        private void EngancharNavegacionDeFrame(object sender, RoutedEventArgs e)
+        {
+            Frame frame = sender as Frame;
+            if (frame == null)
+            {
+                return;
+            }
+
+            // Navigated se dispara de forma fiable en cada navegación del Frame.
+            frame.Navigated -= FrameNavego;
+            frame.Navigated += FrameNavego;
+
+            // La página inicial puede haberse navegado antes de este enganche.
+            AdaptarFondoPaginaAVentana(frame, frame.Content);
+        }
+
+        private void FrameNavego(object sender, NavigationEventArgs e)
+        {
+            AdaptarFondoPaginaAVentana(sender as Frame, e.Content);
+        }
+
+        private void AdaptarFondoPaginaAVentana(Frame frame, object contenidoNavegado)
+        {
+            if (frame == null)
+            {
+                return;
+            }
+
+            Page pagina = contenidoNavegado as Page;
+            FrameworkElement raizPagina = pagina != null
+                ? pagina.Content as FrameworkElement
+                : contenidoNavegado as FrameworkElement;
+            if (raizPagina == null)
+            {
+                return;
+            }
+
+            // Solo aplica a ventanas maximizadas (a pantalla completa), donde el
+            // escalado uniforme deja franjas arriba y abajo que hay que rellenar.
+            Window ventana = Window.GetWindow(frame);
+            if (ventana == null || ventana.WindowState != WindowState.Maximized || ventana.AllowsTransparency)
+            {
+                return;
+            }
+
+            // El fondo de la página se mueve a la ventana (que cubre toda la
+            // pantalla) y la raíz de la página queda transparente. Así el mismo
+            // fondo, a una sola escala, llena el contenido y las franjas del
+            // letterbox, evitando los marcos de otro color (p. ej. el panal azul
+            // detrás del panal café de la sala).
+            Brush fondoPagina = ObtenerFondo(raizPagina);
+            if (fondoPagina == null || EsTransparente(fondoPagina))
+            {
+                return;
+            }
+
+            EstablecerFondo(raizPagina, Brushes.Transparent);
+            ventana.Background = fondoPagina;
+        }
+
+        private static bool EsTransparente(Brush brocha)
+        {
+            SolidColorBrush solido = brocha as SolidColorBrush;
+            return solido != null && solido.Color.A == 0;
         }
 
         private void AdaptarVentanaAResolucion(object sender, RoutedEventArgs e)
